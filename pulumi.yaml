@@ -1,0 +1,21 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as aws from "@pulumi/aws";
+import * from "fs";
+
+const bucket = new aws.s3.Bucket("bucket", {
+    acl: "public-read",
+    policy: fs.readFileSync("policy.json"),
+    website: {
+        indexDocument: "index.html",
+        errorDocument: "error.html",
+        routingRules: `[{
+    "Condition": {
+        "KeyPrefixEquals": "docs/"
+    },
+    "Redirect": {
+        "ReplaceKeyPrefixWith": "documents/"
+    }
+}]
+`,
+    },
+});
