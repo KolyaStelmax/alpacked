@@ -64,3 +64,7 @@ Run in the project locally.
 #### `gatsby build`
 
 Run a production build into `./public`. The result is ready to be put on any static hosting you prefer.
+
+### static sites ip 
+
+https://alpacked-task.s3.us-east-2.amazonaws.com/index.html
